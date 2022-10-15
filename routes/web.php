@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BlogController::class, 'getBlogs'])->name('home');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('blogs', BlogController::class)->only([
+   'show'
+]);
+
+Route::group(['prefix' => 'cms'], function () {
+
+    Route::group(['middleware' => 'auth'], function () {
+        Route::resource('blogs', BlogController::class)->except([
+            'show'
+        ]);
+    });
+
+});
