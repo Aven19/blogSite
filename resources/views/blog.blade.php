@@ -1,5 +1,17 @@
 @extends('layouts.app')
 @section('content')
+<style>
+	.text-small-paragraph{
+		width: 100%;
+		line-height: 1.2em;
+		height: 8em;
+		background-color: gainsboro;
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+	}
+</style>
 <section class="cta-section theme-bg-light py-5">
 	<div class="container text-center single-col-max-width">
 		<h2 class="heading">Want to Create Your Own Blog?</h2>
@@ -36,7 +48,11 @@
 				<div class="col">
 					<h3 class="title mb-1"><a class="text-link" href="{{ route('blogs.show', $blog->id) }}">{{$blog->title}}</a></h3>
 					<div class="meta mb-1"><span class="date">Published {{$blog->created_at->diffForHumans()}}</span><span class="time">Author: {{ $blog->author->first_name }} {{$blog->author->last_name}}</span></div>
-					<div class="intro" style="width: 100px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{!! html_entity_decode($blog->description) !!}</div>
+					<div class="intro text-small-paragraph">
+						<div class="container">
+						{!! html_entity_decode($blog->description) !!}
+						</div>
+					</div>
 					<a class="text-link" href="{{ route('blogs.show', $blog->id) }}">Read more &rarr;</a>
 				</div>
 				<!--//col-->
