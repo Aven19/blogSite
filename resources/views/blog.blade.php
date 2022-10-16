@@ -1,15 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <style>
-	.text-small-paragraph{
-		width: 100%;
-		line-height: 1.2em;
-		height: 8em;
-		background-color: gainsboro;
+	.blog-read-more-div {
+		line-height: 18px;
+		max-height: 115px; /* line-height * 3 */
 		overflow: hidden;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 3;
 	}
 </style>
 <section class="cta-section theme-bg-light py-5">
@@ -30,40 +25,39 @@
 				@endauth
 			</div>
 			@endif
-			<!--//signup-form-->
 		</div>
-		<!--//single-form-max-width-->
 	</div>
-	<!--//container-->
 </section>
 <section class="blog-list px-3 py-5 p-md-5">
 	<div class="container single-col-max-width">
-
 		@foreach($blogs as $key => $blog)
 		<div class="item mb-5">
 			<div class="row g-3 g-xl-0">
-				<div class="col-2 col-xl-3">
-					<img class="img-fluid post-thumb " src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
-				</div>
-				<div class="col">
-					<h3 class="title mb-1"><a class="text-link" href="{{ route('blogs.show', $blog->id) }}">{{$blog->title}}</a></h3>
-					<div class="meta mb-1"><span class="date">Published {{$blog->created_at->diffForHumans()}}</span><span class="time">Author: {{ $blog->author->first_name }} {{$blog->author->last_name}}</span></div>
-					<div class="intro text-small-paragraph">
-						<div class="container">
-						{!! html_entity_decode($blog->description) !!}
+				<div class="container">
+					<div class="row">
+						<div class="col-5 col-md-5 col-sm-12">
+						<img class="img-fluid post-thumb " src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
+							<h3 class="title">
+								<a class="text-link" href="{{ route('blogs.show', $blog->id) }}">
+									{{$blog->title}}
+								</a>
+							</h3>
+							<div class="meta mb-1">
+								<span class="date">Published {{$blog->created_at->diffForHumans()}}</span><span class="time">Author: {{ $blog->author->first_name }} {{$blog->author->last_name}}</span>
+							</div>
+						</div>
+						<div class="col-7 col-md-7 col-sm-12">
+							<div class="intro blog-read-more-div">
+							{!! html_entity_decode($blog->description) !!}
+							</div>
+							<a class="text-link" href="{{ route('blogs.show', $blog->id) }}">Read more &rarr;</a>
 						</div>
 					</div>
-					<a class="text-link" href="{{ route('blogs.show', $blog->id) }}">Read more &rarr;</a>
 				</div>
-				<!--//col-->
 			</div>
-			<!--//row-->
+			@endforeach
+			{{ $blogs->appends(Request::all())->links('pagination::bootstrap-5') }}
 		</div>
-		@endforeach
-
-		{{ $blogs->appends(Request::all())->links('pagination::bootstrap-5') }}
-
-	</div>
 </section>
 @include('layouts.footer')
 @endsection
