@@ -7,6 +7,11 @@
         -o-background-size: 100% 100%;
         background-size: 100% 100%;
     }
+    .blog-wrapper img{
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
 </style>
 @section('content')
 <div class="jumbotron p-4 p-md-5 mb-4" style='background-image: url("https://picsum.photos/500/300?random=1"); background-size: 100%; height: 400px;'>
@@ -28,15 +33,19 @@
         </header>
         <div class="d-flex justify-content-between bd-highlight pt-5 mb-3">
             <div class="p-2 bd-highlight">
+                <div class="meta mb-1">
                 <span class="date">Published {{$blog->created_at->diffForHumans()}}</span>
                 <span class="time">Author: {{ $blog->author->first_name }} {{$blog->author->last_name}}</span>
+                </div>
             </div>
             <div class="p-2 bd-highlight"></div>
             <div class="p-2 bd-highlight"><a href="{{ url()->previous() }}">Go Back</a></div>
         </div>
 
         <div class="text-break blog-post-body pt-5">
+            <div class="container blog-wrapper">
             {!! html_entity_decode($blog->description) !!}
+            </div>
         </div>
     </div>
 
