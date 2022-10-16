@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('content')
+
 <style>
     .jumbotron {
         background: url("https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg") no-repeat center center;
@@ -7,15 +9,16 @@
         -o-background-size: 100% 100%;
         background-size: 100% 100%;
     }
-    .blog-wrapper img{
+
+    .blog-wrapper img {
         width: 100%;
         max-width: 400px;
         height: auto;
     }
 </style>
-@section('content')
+
 <div class="jumbotron p-4 p-md-5 mb-4" style='background-image: url("https://picsum.photos/500/300?random=1"); background-size: 100%; height: 400px;'>
-<div class="col-md-6 px-0">
+    <div class="col-md-6 px-0">
         <h1 class="display-4 pt-5 fst-italic"></h1>
         <p class="lead pt-5 my-3"></p>
     </div>
@@ -34,8 +37,8 @@
         <div class="d-flex justify-content-between bd-highlight pt-5 mb-3">
             <div class="p-2 bd-highlight">
                 <div class="meta mb-1">
-                <span class="date">Published {{$blog->created_at->diffForHumans()}}</span>
-                <span class="time">Author: {{ $blog->author->first_name }} {{$blog->author->last_name}}</span>
+                    <span class="date">Published {{$blog->created_at->diffForHumans()}}</span>
+                    <span class="time">Author: {{ $blog->author->first_name }} {{$blog->author->last_name}}</span>
                 </div>
             </div>
             <div class="p-2 bd-highlight"></div>
@@ -44,7 +47,7 @@
 
         <div class="text-break blog-post-body pt-5">
             <div class="container blog-wrapper">
-            {!! html_entity_decode($blog->description) !!}
+                {!! html_entity_decode($blog->description) !!}
             </div>
         </div>
     </div>

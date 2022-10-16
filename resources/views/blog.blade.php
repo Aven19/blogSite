@@ -7,8 +7,6 @@
 		max-height: 200px; /* line-height * 3 */
 
 	}
-	.blog-card-height{
-	}
 </style>
 <section class="cta-section theme-bg-light py-5">
 	<div class="container text-center single-col-max-width">

@@ -7,12 +7,13 @@ export default defineConfig({
             input: [
                 "resources/sass/app.scss",
                 "resources/js/app.js",
-                "resources/assets/css/main.css",
-                "resources/assets/js/blog.js",
-                "resources/assets/fontawesome/js/all.min.js",
-                "resources/assets/plugins/popper.min.js",
-                "resources/assets/plugins/popper.min.js",
+                'resources/assets/css/main.css',
+                'resources/assets/fontawesome/js/all.min.js',
+                'resources/assets/plugins/popper.min.js',
                 "resources/assets/plugins/bootstrap/js/bootstrap.min.js",
+                'resources/assets/plugins/highlight/highlight.min.js',
+                'resources/assets/js/blog.js',
+                'resources/js/app.js',
                 "resources/assets/custom-file-validation.js"
             ],
             refresh: true,

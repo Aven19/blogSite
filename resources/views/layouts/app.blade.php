@@ -23,12 +23,9 @@
     </style>
     <!-- Theme CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
     @vite([
     'resources/assets/css/main.css',
-    'resources/assets/js/blog.js',
     'resources/assets/fontawesome/js/all.min.js',
-    'resources/assets/plugins/popper.min.js',
     'resources/assets/plugins/popper.min.js',
     'resources/js/app.js'
     ])
