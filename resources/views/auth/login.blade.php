@@ -10,7 +10,7 @@
                     @csrf
 
                     <div class="col-12 col-md-12">
-                        <label class="pb-3 label-text" for="mobile">Enter Your Mobile Number <span class="text-danger">*</span></label>
+                        <label class="pb-3 label-text" for="mobile">Mobile Number <span class="text-danger">*</span></label>
                         <input type="text" id="mobile" name="mobile" class="form-control @error('mobile') is-invalid @enderror me-md-1" placeholder="Your Mobile Number" autocomplete="off">
                         @error('mobile')
                         <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-md-12">
-                        <label class="pb-3 label-text" for="password">Enter Your Password <span class="text-danger">*</span></label>
+                        <label class="pb-3 label-text" for="password">Password <span class="text-danger">*</span></label>
                         <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror me-md-1" placeholder="Enter Your Password">
                         @error('password')
                         <span class="invalid-feedback" role="alert">

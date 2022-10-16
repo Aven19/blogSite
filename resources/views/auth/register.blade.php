@@ -19,7 +19,7 @@
                         @enderror
                     </div>
                     <div class="col-6 col-md-6">
-                        <label class="pb-3 label-text" for="last_name">Enter Your Last Name <span class="text-danger">*</span></label>
+                        <label class="pb-3 label-text" for="last_name">Last Name <span class="text-danger">*</span></label>
                         <input type="text" value="{{old('last_name')}}" id="last_name" name="last_name" class="form-control @error('last_name') is-invalid @enderror me-md-1" placeholder="Enter Your Last Name">
                         @error('last_name')
                         <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-md-12">
-                        <label class="pb-3 label-text" for="email">Enter Your Email Address <span class="text-danger">*</span></label>
+                        <label class="pb-3 label-text" for="email">Email Address <span class="text-danger">*</span></label>
                         <input type="text" value="{{old('email')}}" id="email" name="email" class="form-control @error('email') is-invalid @enderror me-md-1" placeholder="Enter Your Email Address">
                         @error('mobile')
                         <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-md-12">
-                        <label class="pb-3 label-text" for="mobile">Enter Your Mobile Number <span class="text-danger">*</span></label>
+                        <label class="pb-3 label-text" for="mobile">Mobile Number <span class="text-danger">*</span></label>
                         <input type="text" value="{{old('mobile')}}" id="mobile" name="mobile" class="form-control @error('mobile') is-invalid @enderror me-md-1" placeholder="Enter Your Mobile Number">
                         @error('mobile')
                         <span class="invalid-feedback" role="alert">
@@ -46,7 +46,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-md-12">
-                        <label class="pb-3 label-text" for="password">Your Password <span class="text-danger">*</span></label>
+                        <label class="pb-3 label-text" for="password">Password <span class="text-danger">*</span></label>
                         <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror me-md-1" placeholder="Enter Your Password">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-md-12">
-                        <label class="pb-3 label-text" for="password_confirmation">Confirm Your Password <span class="text-danger">*</span></label>
+                        <label class="pb-3 label-text" for="password_confirmation">Confirm Password <span class="text-danger">*</span></label>
                         <input type="password" id="password_confirmation" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror me-md-1" placeholder="Confirm Your Password">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
