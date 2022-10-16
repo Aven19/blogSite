@@ -20,6 +20,11 @@
             padding-top: 10px;
             padding-bottom: 15px;
         }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
     <!-- Theme CSS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
