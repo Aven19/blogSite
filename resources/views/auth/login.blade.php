@@ -3,15 +3,14 @@
 @include('layouts.side-nav')
 <div class="main-wrapper">
     <section class="cta-section theme-bg-light py-5" style="height: 90vh;">
-        <div class="container text-center">
-            <h2 class="heading">{{ __('Login') }}</h2>
-            <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
+        <div class="container">
+            <h2 class="heading  text-center">{{ __('Login') }}</h2>
             <div class="single-form-max-width pt-3 mx-auto">
-                <form method="POST" action="{{ route('login') }}" class="signup-form row g-2 g-lg-2 align-items-center">
+                <form method="POST" action="{{ route('login') }}" class="login_form signup-form row g-2 g-lg-2 align-items-center">
                     @csrf
 
                     <div class="col-12 col-md-12">
-                        <label class="sr-only" for="mobile">Your Mobile Number</label>
+                        <label class="pb-3 label-text" for="mobile">Enter Your Mobile Number <span class="text-danger">*</span></label>
                         <input type="text" id="mobile" name="mobile" class="form-control @error('mobile') is-invalid @enderror me-md-1" placeholder="Your Mobile Number" autocomplete="off">
                         @error('mobile')
                         <span class="invalid-feedback" role="alert">
@@ -20,7 +19,7 @@
                         @enderror
                     </div>
                     <div class="col-12 col-md-12">
-                        <label class="sr-only" for="password">Your Password</label>
+                        <label class="pb-3 label-text" for="password">Enter Your Password <span class="text-danger">*</span></label>
                         <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror me-md-1" placeholder="Enter Your Password">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -53,4 +52,9 @@
     </section>
     @include('layouts.footer')
 </div>
+@endsection
+@section('scripts')
+@vite([
+    "resources/assets/custom-file-validation.js"
+])
 @endsection

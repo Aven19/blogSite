@@ -13,6 +13,7 @@ export default defineConfig({
                 "resources/assets/plugins/popper.min.js",
                 "resources/assets/plugins/popper.min.js",
                 "resources/assets/plugins/bootstrap/js/bootstrap.min.js",
+                "resources/assets/custom-file-validation.js"
             ],
             refresh: true,
         }),

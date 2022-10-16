@@ -25,7 +25,8 @@ class BlogController extends Controller
             }
         ])
             ->searchByRouteName(
-                $request->input('q')
+                $request->input('q'),
+                $request->input('id')
             )->orderBy('id', 'desc')->paginate(10);
 
         return view(self::ROUTE_VIEW_PATH . '.index', compact('blogs'));

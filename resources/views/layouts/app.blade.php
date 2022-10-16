@@ -14,21 +14,30 @@
 
     <!-- FontAwesome JS-->
 
-    <link rel="stylesheet" href="">
+    <style>
+        .error-class-labels {
+            color:#FF0000;  /* red */
+            padding-top: 10px;
+            padding-bottom: 15px;
+        }
+    </style>
     <!-- Theme CSS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/additional-methods.min.js" integrity="sha512-6S5LYNn3ZJCIm0f9L6BCerqFlQ4f5MwNKq+EthDXabtaJvg3TuFLhpno9pcm+5Ynm6jdA9xfpQoMz2fcjVMk9g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @vite([
     'resources/assets/css/main.css',
     'resources/assets/js/blog.js',
     'resources/assets/fontawesome/js/all.min.js',
     'resources/assets/plugins/popper.min.js',
     'resources/assets/plugins/popper.min.js',
-    'resources/js/app.js',
+    'resources/js/app.js'
     ])
-
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 
 <body>
+
     @if (Session::has('success'))
     <div style="position: absolute; top: 0; right: 0;">
         <div class="toast fade show" id="myToast">
@@ -58,9 +67,6 @@
     </div>
     @endif
     @yield('content')
-
+    @yield('scripts')
 </body>
-<script>
-</script>
-
 </html>

@@ -14,7 +14,7 @@
     </section>
     <section class="cta-section theme-bg-light">
         <div class="container">
-            <form method="POST" action="{{ route('blogs.store') }}" class="blog-form row g-2 g-lg-2 align-items-center" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('blogs.store') }}" class="blog-add-form blog-form row g-2 g-lg-2 align-items-center" enctype="multipart/form-data">
                 @csrf
 
                 <div class="col-12 col-md-12">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-12 col-md-12 pt-3">
                     <label class="pb-3 label-text" for="image">Thumbnail Image<span class="text-danger">*</span></label>
-                    <input type="file" value="{{old('file')}}" id="file" name="file" class="form-control-sm  @error('file') is-invalid @enderror me-md-1" placeholder="Add Thumbnail Image">
+                    <input type="file" value="{{old('file')}}" id="file" name="file" class="form-control-sm  @error('file') is-invalid @enderror me-md-1" placeholder="Add Thumbnail Image" accept="image/png, image/jpg, image/jpeg" >
                     @error('file')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -73,4 +73,9 @@
         });
     });
 </script>
+@endsection
+@section('scripts')
+@vite([
+    "resources/assets/custom-file-validation.js"
+])
 @endsection

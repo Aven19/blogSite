@@ -36,10 +36,14 @@ class Blog extends Model
      */
     protected $casts = [];
 
-    public function scopeSearchByRouteName($query, $searchParam)
+    public function scopeSearchByRouteName($query, $searchParam, $blogId = null)
     {
+        if (!is_null($blogId)) {
+            return  $query->where("id", '=', "$blogId");
+        }
+
         if (!is_null($searchParam)) {
-            return  $query->where("route", "like", "%$searchParam%");
+            return  $query->where("title", "like", "%$searchParam%");
         }
 
         return $query;
