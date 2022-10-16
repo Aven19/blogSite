@@ -3,7 +3,7 @@
 <style>
 	.blog-read-more-div {
 		line-height: 18px;
-		max-height: 115px; /* line-height * 3 */
+		max-height: 200px; /* line-height * 3 */
 		overflow: hidden;
 	}
 </style>
