@@ -36,7 +36,9 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-5 col-md-5 col-sm-12">
-						<img class="img-fluid post-thumb " src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
+						<img class="img-fluid post-thumb"
+						onError="this.onerror=null;this.src='https://wallpaperaccess.com/full/231705.jpg';"
+						src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
 							<h3 class="title">
 								<a class="text-link" href="{{ route('blogs.show', $blog->id) }}">
 									{{$blog->title}}

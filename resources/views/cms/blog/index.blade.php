@@ -55,7 +55,9 @@
 						<th scope="row">{{ $loop->iteration }}</th>
 						<td>{{ $blog->title }}</td>
 						<td>
-							<img class="img-fluid post-thumb " src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
+							<img class="img-fluid post-thumb" 
+							onError="this.onerror=null;this.src='https://wallpaperaccess.com/full/231705.jpg';"
+							src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
 						</td>
 						<td>{{ $blog->created_at }}</td>
 						<td>

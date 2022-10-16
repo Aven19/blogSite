@@ -1,7 +1,7 @@
 @extends('layouts.app')
 <style>
     .jumbotron {
-        background: url("{{ url('storage/blog-image/'.$blog->file) }}") no-repeat center center;
+        background: url("https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg") no-repeat center center;
         -webkit-background-size: 100% 100%;
         -moz-background-size: 100% 100%;
         -o-background-size: 100% 100%;
@@ -9,7 +9,7 @@
     }
 </style>
 @section('content')
-<div class="jumbotron p-4 p-md-5 mb-4" style='background-image: url("{{ url("storage/blog-image/".$blog->file) }}"); background-size: 100%;'>
+<div class="jumbotron p-4 p-md-5 mb-4" style='background-image: url("https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg"); background-size: 100%;'>
 <div class="col-md-6 px-0">
         <h1 class="display-4 pt-5 fst-italic"></h1>
         <p class="lead pt-5 my-3"></p>

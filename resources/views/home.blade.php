@@ -21,7 +21,9 @@
 		<div class="item mb-5">
 			<div class="row g-3 g-xl-0">
 				<div class="col-2 col-xl-3">
-				<img class="img-fluid post-thumb " src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
+				<img class="img-fluid post-thumb" 
+				onError="this.onerror=null;this.src='https://wallpaperaccess.com/full/231705.jpg';"
+				src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
 				</div>
 				<div class="col">
 					<h3 class="title mb-1"><a class="text-link" href="blog-post.html">{{$blog->title}}</a></h3>

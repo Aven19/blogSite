@@ -37,7 +37,10 @@
                         </span>
                         @enderror
                         <div class="col-2 col-xl-3">
-                            <img class="img-fluid post-thumb " src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
+                            <img class="img-fluid post-thumb" 
+						    onError="this.onerror=null;this.src='https://wallpaperaccess.com/full/231705.jpg';"
+                            
+                            src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
                         </div>
                     </div>
 
