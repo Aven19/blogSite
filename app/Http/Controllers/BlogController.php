@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
-    const ROUTE_VIEW_PATH = 'blogs';
+    const ROUTE_VIEW_PATH = 'cms/blog';
     const DESTINATION_FOLDER = 'blog-image/';
 
     /**
@@ -19,14 +19,16 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $blog = Blog::searchByRouteName(
-            $request->input('q'),
-            $request->input('id')
-        )->filterByContentType(
-            $request->input('content_type')
-        )->orderBy('id', 'desc')->paginate(10);
+        $blogs = Blog::with([
+            'author' => function ($q) {
+                $q->select(['id', 'first_name', 'last_name']);
+            }
+        ])
+            ->searchByRouteName(
+                $request->input('q')
+            )->orderBy('id', 'desc')->paginate(10);
 
-        return view(self::ROUTE_VIEW_PATH . '.index', compact('blog'));
+        return view(self::ROUTE_VIEW_PATH . '.index', compact('blogs'));
     }
 
     /**
@@ -47,10 +49,10 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        $route = $request->input('route');
+        $route = Str::slug($request->input('title'));
 
         $validatedData = $request->validate([
-            'title' => 'required|min:2|max:255',
+            'title' => 'required|unique:blogs|min:2|max:255',
             'description' => 'required',
             'file' => 'required',
         ]);
@@ -79,15 +81,14 @@ class BlogController extends Controller
 
         $blog = new Blog;
         $blog->title = $request->input('title');
-        $blog->route = $request->input('route');
+        $blog->route = $route;
         $blog->description = $request->input('description');
         $blog->file = $request->hasFile('file') != null ? $uniqueName : null;
         $blog->created_by = auth()->id();
-        $blog->status = $request->input('status');
 
         $blog->save();
 
-        return redirect()->route('custom-pages.index')->with('success', 'Page has been created successfully.');
+        return redirect()->route('blogs.index')->with('success', 'Page has been created successfully.');
     }
 
     /**
@@ -98,7 +99,9 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        return view('blog');
+        $blog = Blog::findOrFail($id);
+
+        return view(self::ROUTE_VIEW_PATH . '.show', compact('blog'));
     }
 
     /**
@@ -121,7 +124,52 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $route = Str::slug($request->input('title'));
+
+        $validatedData = $request->validate([
+            'title' => 'required|unique:blogs,title,'.$id,
+            'description' => 'required',
+        ]);
+
+        $blog = Blog::findOrFail($id);
+
+        $uniqueName = $blog->file;
+
+        if ($request->file('file') != null) {
+            //get filename with extension
+            $fileNameWithExtension = $request->file->getClientOriginalName();
+
+            //get filename without extension
+            $filename = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
+
+            //get file extension
+            $extension = strtolower(pathinfo($fileNameWithExtension, PATHINFO_EXTENSION));
+
+            $uniqueName = Str::slug($filename) . "-" . uniqid() . "." . $extension;
+
+            if (Storage::disk(disk_type())->exists(self::DESTINATION_FOLDER . $blog->file)) {
+                Storage::disk(disk_type())->delete(self::DESTINATION_FOLDER . $blog->file);
+            }
+
+            $uploadedFile = $request->file('file');
+
+            Storage::disk(disk_type())->putFileAs(
+                self::DESTINATION_FOLDER,
+                $uploadedFile,
+                $uniqueName,
+                'public'
+            );
+        }
+
+        $blog->update([
+            'title' => $request->input('title'),
+            'route' => $route,
+            'description' => $request->input('description'),
+            'file' => $uniqueName
+        ]);
+
+        return redirect()->route('blogs.index', ['content_type' => $blog->content_type, 'q' => $blog->route, 'id' => $blog->id])
+            ->with('success', 'Blog has been updated successfully.');
     }
 
     /**
@@ -146,14 +194,18 @@ class BlogController extends Controller
         return redirect()->back()->withError('Something went wrong, Please try again.');
     }
 
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function getBlogs(Request $request)
     {
-        $blogs = Blog::orderBy('id', 'desc')->paginate(10);
+        $blogs = Blog::with([
+            'author' => function ($q) {
+                $q->select(['id', 'first_name', 'last_name']);
+            }
+        ])->orderBy('id', 'desc')->paginate(10);
 
         return view('blog', compact('blogs'));
     }

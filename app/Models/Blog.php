@@ -19,8 +19,7 @@ class Blog extends Model
         'route',
         'description',
         'file',
-        'created_by',
-        'status',
+        'created_by'
     ];
 
     /**
@@ -28,14 +27,30 @@ class Blog extends Model
      *
      * @var array<int, string>
      */
-    protected $hidden = [
-    ];
+    protected $hidden = [];
 
     /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
      */
-    protected $casts = [
-    ];
+    protected $casts = [];
+
+    public function scopeSearchByRouteName($query, $searchParam)
+    {
+        if (!is_null($searchParam)) {
+            return  $query->where("route", "like", "%$searchParam%");
+        }
+
+        return $query;
+    }
+
+    /**
+     * Get the author that owns the blog.
+     */
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+    
 }
