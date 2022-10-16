@@ -56,7 +56,7 @@
 						<td>{{ $blog->title }}</td>
 						<td>
 							<img class="img-fluid post-thumb" 
-							onError="this.onerror=null;this.src='https://wallpaperaccess.com/full/231705.jpg';"
+							onError="this.onerror=null;this.src='https://picsum.photos/500/300?random={{$blog->id}}';"
 							src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
 						</td>
 						<td>{{ $blog->created_at }}</td>

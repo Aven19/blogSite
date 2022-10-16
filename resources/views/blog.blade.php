@@ -3,8 +3,11 @@
 <style>
 	.blog-read-more-div {
 		line-height: 18px;
-		max-height: 200px; /* line-height * 3 */
 		overflow: hidden;
+		max-height: 200px; /* line-height * 3 */
+
+	}
+	.blog-card-height{
 	}
 </style>
 <section class="cta-section theme-bg-light py-5">
@@ -31,15 +34,16 @@
 <section class="blog-list px-3 py-5 p-md-5">
 	<div class="container single-col-max-width">
 		@foreach($blogs as $key => $blog)
-		<div class="item mb-5">
+		<div class="item pt-5 mb-5">
 			<div class="row g-3 g-xl-0">
 				<div class="container">
 					<div class="row">
 						<div class="col-5 col-md-5 col-sm-12">
-						<img class="img-fluid post-thumb"
-						onError="this.onerror=null;this.src='https://wallpaperaccess.com/full/231705.jpg';"
+						<div class="blog-card-height">
+						<img class="img-fluid post-thumb mb-3"
+						onError="this.onerror=null;this.src='https://picsum.photos/500/300?random={{$blog->id}}';"
 						src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
-							<h3 class="title">
+							<h3 class="title mb-3">
 								<a class="text-link" href="{{ route('blogs.show', $blog->id) }}">
 									{{$blog->title}}
 								</a>
@@ -48,8 +52,9 @@
 								<span class="date">Published {{$blog->created_at->diffForHumans()}}</span><span class="time">Author: {{ $blog->author->first_name }} {{$blog->author->last_name}}</span>
 							</div>
 						</div>
+						</div>
 						<div class="col-7 col-md-7 col-sm-12">
-							<div class="intro blog-read-more-div">
+							<div class="intro blog-card-height blog-read-more-div">
 							{!! html_entity_decode($blog->description) !!}
 							</div>
 							<a class="text-link" href="{{ route('blogs.show', $blog->id) }}">Read more &rarr;</a>

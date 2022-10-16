@@ -9,7 +9,7 @@
     }
 </style>
 @section('content')
-<div class="jumbotron p-4 p-md-5 mb-4" style='background-image: url("https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg"); background-size: 100%;'>
+<div class="jumbotron p-4 p-md-5 mb-4" style='background-image: url("https://picsum.photos/500/300?random=1"); background-size: 100%; height: 400px;'>
 <div class="col-md-6 px-0">
         <h1 class="display-4 pt-5 fst-italic"></h1>
         <p class="lead pt-5 my-3"></p>

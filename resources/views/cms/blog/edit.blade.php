@@ -38,7 +38,7 @@
                         @enderror
                         <div class="col-2 col-xl-3">
                             <img class="img-fluid post-thumb" 
-						    onError="this.onerror=null;this.src='https://wallpaperaccess.com/full/231705.jpg';"
+						    onError="this.onerror=null;this.src='https://picsum.photos/500/300?random=4';"
                             
                             src="{{ url('storage/blog-image/'.$blog->file) }}" alt="{{$blog->title}}">
                         </div>
