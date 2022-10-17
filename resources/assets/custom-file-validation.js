@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 required: true,
                 digits: true,
                 minlength: 10,
-                maxlength: 15,
+                maxlength: 10,
             },
             password: {
                 required: true,
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 required: true,
                 digits: true,
                 minlength: 10,
-                maxlength: 15,
+                maxlength: 10,
             },
             password: {
                 required: true,
