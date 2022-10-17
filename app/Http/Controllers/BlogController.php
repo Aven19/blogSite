@@ -19,7 +19,7 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $blogs = Blog::with([
+        $blogs = Blog::where('created_by', auth()->id())->with([
             'author' => function ($q) {
                 $q->select(['id', 'first_name', 'last_name']);
             }
